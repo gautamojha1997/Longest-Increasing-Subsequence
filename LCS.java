@@ -6,8 +6,10 @@ import java.util.Scanner;
 public class LCS {
     /*Function which prints the longest increasing subsequence and also returns the length of increasing subsequence*/
     public static int lengthOfLIS(int[] nums) {
+        
         /*array d which computes length of lis for all elements in nums including that element*/
         int[] d = new int[nums.length];
+        
         Arrays.fill(d, 1); //initialize d with 1 since lis for each element is initially 1
 
         /*Check is nums[j] is less than nums[i] if yes then compute d[i] as max(d[i],d[j]+1*/
@@ -18,14 +20,18 @@ public class LCS {
                 }
             }
         }
+        
         int largest = 0; //variable used to find the max value in array d
+        
         for(int i=0;i<nums.length;i++){
             if(d[i]>largest){
                 largest = d[i];
             }
         }
+        
         int tmp = largest;
         ArrayList<Integer> subs = new ArrayList<Integer>(nums.length); //Arraylist which prints the longest increasing subsequence
+        
         for (int i = d.length -1;i>=0;i--){
             if (d[i] == tmp){
                 subs.add(nums[i]);
